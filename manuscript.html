@@ -130,9 +130,9 @@
   <meta name="citation_fulltext_html_url" content="https://taylorreiter.github.io/2022-paper-charcoal/" />
   <meta name="citation_pdf_url" content="https://taylorreiter.github.io/2022-paper-charcoal/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://taylorreiter.github.io/2022-paper-charcoal/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://taylorreiter.github.io/2022-paper-charcoal/v/9a22fab4497f80f501ea361d028f26888ad9d5a0/" />
-  <meta name="manubot_html_url_versioned" content="https://taylorreiter.github.io/2022-paper-charcoal/v/9a22fab4497f80f501ea361d028f26888ad9d5a0/" />
-  <meta name="manubot_pdf_url_versioned" content="https://taylorreiter.github.io/2022-paper-charcoal/v/9a22fab4497f80f501ea361d028f26888ad9d5a0/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://taylorreiter.github.io/2022-paper-charcoal/v/91342b17509f5475b66a501b70ffa1f80da1abfc/" />
+  <meta name="manubot_html_url_versioned" content="https://taylorreiter.github.io/2022-paper-charcoal/v/91342b17509f5475b66a501b70ffa1f80da1abfc/" />
+  <meta name="manubot_pdf_url_versioned" content="https://taylorreiter.github.io/2022-paper-charcoal/v/91342b17509f5475b66a501b70ffa1f80da1abfc/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -156,9 +156,9 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://taylorreiter.github.io/2022-paper-charcoal/v/9a22fab4497f80f501ea361d028f26888ad9d5a0/">permalink</a>)
+(<a href="https://taylorreiter.github.io/2022-paper-charcoal/v/91342b17509f5475b66a501b70ffa1f80da1abfc/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/taylorreiter/2022-paper-charcoal/tree/9a22fab4497f80f501ea361d028f26888ad9d5a0">taylorreiter/2022-paper-charcoal@9a22fab</a>
+from <a href="https://github.com/taylorreiter/2022-paper-charcoal/tree/91342b17509f5475b66a501b70ffa1f80da1abfc">taylorreiter/2022-paper-charcoal@91342b1</a>
 on June 15, 2022.
 </em></small></p>
 <h2 id="authors">Authors</h2>
@@ -184,6 +184,18 @@ Department of Something, University of Whatever; Department of Whatever, Univers
 </small></p></li>
 </ul>
 <h2 class="page_break_before" id="abstract">Abstract</h2>
+<p>Metagenomics has expanded our knowledge of microbial diversity, but contaminant sequences are frequently accidentally included in metagenome-assembled genomes.
+Genome contamination is often estimated by the presence of marker genes that are biased against detecting contaminants lacking these sequences.
+Further, most contamination detection tools do not remove contamination.
+We present charcoal, a tool that rapidly identifies and removes contamination in metagenome-assembled genomes using k-mer based methods.
+K-mers are nucleotide sequences of length k.
+Sufficiently long k-mers are usually specific to a taxonomic lineage.
+Taking advantage of this property of k-mers, charcoal identifies majority and minority lineages for each contiguous sequence in a genome and removes contiguous sequences belonging to minority lineages when those lineages occur below a taxonomic threshold (by default, order).
+Applying charcoal to the Genome Taxonomy Database rs207, we found approximately XX% of genomes in GTDB were contaminated, with contamination broadly distributed across species and occurring in representative and RefSeq genomes.
+Genomes with longer contiguous sequences were less likely to be contaminated.
+Our results show concordance with CheckM on detecting the presence of contamination in a genome.
+Charcoal is a snakemake workflow developed around the tool sourmash.
+It is available at github.com/dib-lab/charcoal, and is pip installable.</p>
 <p>This manuscript is a template (aka “rootstock”) for <a href="https://manubot.org/" title="Manubot">Manubot</a>, a tool for writing scholarly manuscripts.
 Use this template as a starting point for your manuscript.</p>
 <p>The rest of this document is a full list of formatting elements/features supported by Manubot.
@@ -404,7 +416,7 @@ White background specified to serve as a backdrop for transparent sections of th
 </tbody>
 </table>
 </div>
-<div id="tbl:ef069878-521c-4073-95e0-49722e7ef112" class="tablenos">
+<div id="tbl:656c3b51-ceee-4300-b6d9-f0e209d447f4" class="tablenos">
 <table id="tbl:">
 <caption><span>Table 3:</span> A table with merged cells using the <code>attributes</code> plugin.
 </caption>
@@ -485,6 +497,127 @@ useful for <em>general information</em> - <a href="https://manubot.org/">manubot
 useful for <em>important information</em> - <a href="https://manubot.org/">manubot.org</a></span></p>
 <p><span class="banner lightred"><i class="fas fa-ban fa-lg"></i> <strong>Light Red Banner</strong><br>
 useful for <em>warnings</em> - <a href="https://manubot.org/">manubot.org</a></span></p>
+<h1 id="introduction">Introduction</h1>
+<p>Metagenomic sequencing has expanded our knowledge of microbial communities and their diversity <span class="citation" data-cites="g228aulb hMM4KrP3 1EDN9Tt7p">[<a href="#ref-g228aulb" role="doc-biblioref">9</a>,<a href="#ref-hMM4KrP3" role="doc-biblioref">10</a>,<a href="#ref-1EDN9Tt7p" role="doc-biblioref">11</a>]</span>.
+<em>De novo</em> metagenome analysis has generated thousands of draft genomes, termed metagenome-assembled genomes (MAGs), from organisms from diverse environments <span class="citation" data-cites="F7RexqdF 1FDpZ7jSj x94unSVP hMM4KrP3">[<a href="#ref-hMM4KrP3" role="doc-biblioref">10</a>,<a href="#ref-F7RexqdF" role="doc-biblioref">12</a>,<a href="#ref-1FDpZ7jSj" role="doc-biblioref">13</a>,<a href="#ref-x94unSVP" role="doc-biblioref">14</a>]</span>.
+Recently, large-scale re-analysis efforts have led to a rapid expansion in draft genomes in public repositories like the European Nucleotide Archive <span class="citation" data-cites="x94unSVP">[<a href="#ref-x94unSVP" role="doc-biblioref">14</a>]</span> and the Joint Genome Institute IMG/M <span class="citation" data-cites="hMM4KrP3">[<a href="#ref-hMM4KrP3" role="doc-biblioref">10</a>]</span>.
+Increased observation of draft genomes across the tree of life better enables researchers to contextualize new sequencing data and the roles that microorganisms play in diverse metabolic processes <span class="citation" data-cites="wrBRBdFb EsN8kZ60">[<a href="#ref-wrBRBdFb" role="doc-biblioref">15</a>,<a href="#ref-EsN8kZ60" role="doc-biblioref">16</a>]</span>.</p>
+<p>MAG inference relies on assembly and binning of metagenomic sequencing data.
+Assembly produces long contiguous sequences by identifying overlaps between short sequencing reads, while binning groups assembled sequences into MAGs using read coverage and tetramernucleotide frequency.
+Both processes are subject to biases that can reduce the completeness of or increase the contamination in a MAG: low sequencing coverage or high genomic variation causes short read assemblers to break contiguous sequences into shorter pieces (CITE), which decreases the signal for and accuracy of binning (CITE).
+Commonly, the completeness and purity of MAGs is estimated through the presence and sequence composition of single-copy marker genes <span class="citation" data-cites="iTI5DiYU">[<a href="#ref-iTI5DiYU" role="doc-biblioref">17</a>]</span> <span class="citation" data-cites="S53q1T30">[<a href="#ref-S53q1T30" role="doc-biblioref">18</a>]</span>, with MAGs that reach &gt;90% completeness and &lt;5% contamination considered high quality <span class="citation" data-cites="iTI5DiYU">[<a href="#ref-iTI5DiYU" role="doc-biblioref">17</a>]</span>.
+Single-copy marker genes are sets of genes that are present once in a genome of almost all members of a taxonomic group <span class="citation" data-cites="iTI5DiYU bKxX6Whi">[<a href="#ref-iTI5DiYU" role="doc-biblioref">17</a>,<a href="#ref-bKxX6Whi" role="doc-biblioref">19</a>]</span>.
+Using these genes to estimate contamination leads to two important biases.
+First, given the assumption that marker genes are universally present in genomes, if a marker gene resides on a contaminant sequence but no other sequence for that marker gene is present in the genome, it will not be detected as contamination <span class="citation" data-cites="iTI5DiYU We2Hi8xm">[<a href="#ref-iTI5DiYU" role="doc-biblioref">17</a>,<a href="#ref-We2Hi8xm" role="doc-biblioref">20</a>]</span>.
+When a MAG is substantially complete, this may lead to a small underestimation in contamination (~3% <span class="citation" data-cites="iTI5DiYU">[<a href="#ref-iTI5DiYU" role="doc-biblioref">17</a>]</span>), but as completeness decreases, contamination may be substantially underestimated <span class="citation" data-cites="We2Hi8xm">[<a href="#ref-We2Hi8xm" role="doc-biblioref">20</a>]</span>.
+Second, contiguous sequences which do not contain marker sequences are not included among contamination estimates <span class="citation" data-cites="iTI5DiYU">[<a href="#ref-iTI5DiYU" role="doc-biblioref">17</a>]</span> (note checkm called out plasmids and phages for this bias specifically).</p>
+<p>Given these biases, methods that do not rely solely on marker genes may be better suited for contamination estimation.
+Many tools have recently been developed that rely on different strategies for detecting contamination <span class="citation" data-cites="SOBt1t7t">[<a href="#ref-SOBt1t7t" role="doc-biblioref">21</a>]</span>.
+GUNC expands beyond marker genes and uses the full complement of genes in a genome to identify contiguous sequences that fall outside of the predicted lineage <span class="citation" data-cites="HDwM5UZ7">[<a href="#ref-HDwM5UZ7" role="doc-biblioref">22</a>]</span>.
+It estimates the distribution of taxonomic assignments within and across contiguous sequences to identify contaminants even among sequences that are poorly taxonomically labelled <span class="citation" data-cites="HDwM5UZ7">[<a href="#ref-HDwM5UZ7" role="doc-biblioref">22</a>]</span>.
+Conterminator detects cross-kingdom contamination using all-vs-all alignment and is geared toward contamination detection in large collections of genomes (e.g. databases) <span class="citation" data-cites="XxzzVxWw">[<a href="#ref-XxzzVxWw" role="doc-biblioref">23</a>]</span>.
+Sequences are considered contaminants when at least 100 nucleotides and no more than 20 kb share a sequence identity of at least 90% in genomes that originate from different kingdoms <span class="citation" data-cites="XxzzVxWw">[<a href="#ref-XxzzVxWw" role="doc-biblioref">23</a>]</span>.
+In addition, conterminator finds contamination in protein sequences by identifying protein clusters that contain sequences from cross-kingdom members <span class="citation" data-cites="XxzzVxWw">[<a href="#ref-XxzzVxWw" role="doc-biblioref">23</a>]</span>.</p>
+<p>Removing contamination is a separate problem from estimating its extent.
+Tools like RefineM <span class="citation" data-cites="wrBRBdFb">[<a href="#ref-wrBRBdFb" role="doc-biblioref">15</a>]</span>, MAGPpurify <span class="citation" data-cites="ecAUFQCt">[<a href="#ref-ecAUFQCt" role="doc-biblioref">24</a>]</span>, and BlobTools <span class="citation" data-cites="3aGrLq0Q">[<a href="#ref-3aGrLq0Q" role="doc-biblioref">25</a>]</span> rely on a combination of GC content, tetramernucleotide frequency, read coverage, phylogenetic or clade markers, conspecific sequences, and known contaminants to flag contaminant contiguous sequences for removal.
+The inclusion of read coverage profiles necessitates the use of the original sequencing reads to produce coverage profiles in BAM format for the genomes.
+Given that sequencing data and BAM files are usually orders of magnitude larger than genome sequences, this requirement limits the utility of such approaches, especially for large-scale genome databases.
+Tools like GUNC are poised for contamination removal without relying on read coverage profiles, but as of yet such approaches are unimplemented <span class="citation" data-cites="HDwM5UZ7">[<a href="#ref-HDwM5UZ7" role="doc-biblioref">22</a>]</span>.</p>
+<p>Long k-mers capture relatedness between organisms, where a k=31 captures species-level similarity <span class="citation" data-cites="mAjlUXL2">[<a href="#ref-mAjlUXL2" role="doc-biblioref">26</a>]</span>.
+K-mers offer an alternative metric to identify contamination, especially in sequences lacking marker genes.
+Here we describe Charcoal, an automated method for filtering contaminant contiguous sequences from MAGs.
+We show…
+We show…
+We envisage that charcoal will complement marker gene-based approaches for contamination estimation, removing problematic sequences before they are further analyzed or propagated in public databases.</p>
+<h1 id="methods">Methods</h1>
+<h2 id="overview">Overview</h2>
+<div id="fig:overview" class="fignos">
+<figure>
+<img src="images/charcoal_overview.png" alt="Figure 5: Summary of steps used to decontaminate genomes with charcoal. In the first stage of the pipeline, contamination detection occurs by comparing the taxonomic assignment of each contig in a genome against all other contigs. Contigs with inconsistent taxonomy are flagged as contaminants, by default if they differ at the order level or above. The results of this step are summarized to report the contaminating genomes, the number of contaminant contigs and basepairs at each level of taxonomy, and other metrics like the fraction of the genome that was identifiable and the fraction that was assignable to the majority lineage. The outputs of the first stage of the pipeline can then be used in any of three additional reporting steps. First, contamination can be verified by aligning the contaminant contigs against their identified matching reference genome, and the mappings can be visualized. Second, an html document can be produced that gives an overview of the contamination in each genome. Lastly, the contaminant contigs can be separated out from the non-contaminant contigs, writing two separate FASTA files per genome." />
+<figcaption aria-hidden="true"><span>Figure 5:</span> <strong>Summary of steps used to decontaminate genomes with charcoal.</strong>
+In the first stage of the pipeline, contamination detection occurs by comparing the taxonomic assignment of each contig in a genome against all other contigs.
+Contigs with inconsistent taxonomy are flagged as contaminants, by default if they differ at the order level or above.
+The results of this step are summarized to report the contaminating genomes, the number of contaminant contigs and basepairs at each level of taxonomy, and other metrics like the fraction of the genome that was identifiable and the fraction that was assignable to the majority lineage.
+The outputs of the first stage of the pipeline can then be used in any of three additional reporting steps.
+First, contamination can be verified by aligning the contaminant contigs against their identified matching reference genome, and the mappings can be visualized.
+Second, an html document can be produced that gives an overview of the contamination in each genome.
+Lastly, the contaminant contigs can be separated out from the non-contaminant contigs, writing two separate FASTA files per genome.</figcaption>
+</figure>
+</div>
+<p>To identify contamination, charcoal first creates a FracMinHash sketch for each contiguous sequence (“contig”) in an input genome.
+Charcoal then identifies all genomes in a database (“reference genomes”) that share sequence overlap with the input genome using sourmash <code>prefetch</code>.
+Subsequent operations subset the original database to include only the genomes identified by <code>prefetch</code>, reducing search volumes.
+Using these matches, charcoal uses sourmash <code>gather</code> to identify the minimum set of genomes that cover (or contain) the k-mers in each contig <span class="citation" data-cites="IadOz4ol">[<a href="#ref-IadOz4ol" role="doc-biblioref">27</a>]</span>.
+Charcoal then determines the taxonomic lineage of each contig using a lineage spreadsheet that records the taxonomy of each reference genome in the database; the taxonomic assignment occurs at the lowest common ancestor of all taxonomic assignments given to a contig.
+If there is an exact match between the input genome and a genome in the database, this match is removed to allow decontamination to continue.</p>
+<p>Charcoal compares the taxonomic lineage of each contig against the lineage of the input genome.
+If the contig has a different lineage before or at the configured taxonomic rank (order by default) than that of the majority lineage, the contig is considered a contaminant.
+For each contig, charcoal reports the fraction of identified hashes (total and to each major and minor lineage), an estimate of contaminated base pairs (at each taxonomic rank match), as well as the fraction of contigs and base pairs unable to be identified.</p>
+<p>The input genome lineage can be user-provided, or it can be determined by charcoal via majority vote of all lineages assigned to all contigs.
+If the lineage is determined by charcoal, by default a minimum 10% of the input genome must have been assigned a taxonomic lineage, and 20% of assigned sequences must match to the majority lineage.
+If these specifications are not met, charcoal will not decontaminate the input genome unless the user specifies a lineage.
+The user can optionally specify a lineage (e.g. d__Eukaryota), and charcoal will remove contigs that have a lineage different from the user-specified one.
+This allows charcoal to remove contigs from an input genome when some contigs from that genome occur in the database and when the input genome is not related to anything in a database.
+Charcoal reports whether the provided lineage agrees with k-mer classification at or above the genus level.</p>
+<p>After the initial stage of contaminant detection, charcoal can perform additional tasks to verify, summarize, or remove the contaminant sequences.
+Contaminant verification downloads the reference genome sequence for any genome that was detected among the input genome contigs and aligns the contigs against those genomes using mashmap <span class="citation" data-cites="iMYJIG48">[<a href="#ref-iMYJIG48" role="doc-biblioref">28</a>]</span>.
+Contaminant removal separates “clean” from “dirty” contigs and outputs each set into a FASTA file.
+Importantly, charcoal will not remove a contig if it is unidentifiable, whether it is too short to be sketched or does not contain sequences in the reference database.
+While these contigs could still be contaminants, charcoal assumes contigs are clean for which it has no information.
+Therefore, charcoal will fail to detect contamination for very short contigs which contain no selected k-mers, as well as contigs with novel DNA content.
+Lastly, charcoal has a report feature that summarizes and visualizes the taxonomic lineages detected in each input genome as well as the alignments between the input genome and reference genomes.</p>
+<p>Sourmash <code>prefetch</code> is the most compute intensive step in the decontamination process.
+When using the GTDB rs207 representative database, this step does not exceed 8GB of RAM.</p>
+<ul>
+<li>statement that charcoal is database dependent (probably can go in last paragraph with RAM/CPU considerations)</li>
+</ul>
+<h2 id="availability-and-dependencies">Availability and dependencies</h2>
+<p>Charcoal is written in python3 and can be installed via pip as charcoal-bio.
+The core algorithms (contaminant detection and removal) depend on sourmash and snakemake.
+Contaminant verification depends on lxml and mashmap <span class="citation" data-cites="iMYJIG48">[<a href="#ref-iMYJIG48" role="doc-biblioref">28</a>]</span>.
+Reporting depends on mummer, papermill, notebook, and plotly <span class="citation" data-cites="NV3AwVUt">[<a href="#ref-NV3AwVUt" role="doc-biblioref">29</a>]</span>.
+The source code is available at github.com/dib-lab/charcoal.
+ZENODO DOI.</p>
+<h3 id="datasets-and-benchmarking">Datasets and benchmarking</h3>
+<h1 id="results">Results</h1>
+<p><strong>old results outline:</strong>
++ charcoal estimates low contamination in non-representative GTDB genomes
++ charcoal assigns correct taxonomy to all non-representative GTDB genomes
++ charcoal vs. checkm
++ charcoal vs. checkm: mgnify, tara
++ checkm on charcoal clean
++ prokka on charcoal dirty
++ charcoal vs. refineM and magpurify
++ verification of contamination/contam case studies
++ case studies
++ user-provided lineages
++ cDBG/spacegraphcats?
++ user-specified lineages</p>
+<h1 id="discussion">Discussion</h1>
+<h2 id="benefits-and-drawbacks-of-charcoal.">Benefits and drawbacks of charcoal.</h2>
+<p>Commonly, the completeness and contamination of MAGs is estimated through the presence and sequence composition of single-copy marker genes <span class="citation" data-cites="iTI5DiYU S53q1T30">[<a href="#ref-iTI5DiYU" role="doc-biblioref">17</a>,<a href="#ref-S53q1T30" role="doc-biblioref">18</a>]</span>, with MAGs that reach &gt;90% completeness and &lt;5% contamination considered high quality <span class="citation" data-cites="iTI5DiYU">[<a href="#ref-iTI5DiYU" role="doc-biblioref">17</a>]</span>.
+Using these genes to estimate contamination leads to two important biases.
+First, given the assumption that marker genes are universally present in genomes, if a marker gene resides on a contaminant sequence but no other sequence for that marker gene is present in the genome, it will not be detected as contamination <span class="citation" data-cites="iTI5DiYU We2Hi8xm">[<a href="#ref-iTI5DiYU" role="doc-biblioref">17</a>,<a href="#ref-We2Hi8xm" role="doc-biblioref">20</a>]</span>.
+When a MAG is substantially complete, this may lead to a small underestimation in contamination (~3% <span class="citation" data-cites="iTI5DiYU">[<a href="#ref-iTI5DiYU" role="doc-biblioref">17</a>]</span>), but as completeness decreases, contamination may be substantially underestimated <span class="citation" data-cites="We2Hi8xm">[<a href="#ref-We2Hi8xm" role="doc-biblioref">20</a>]</span>.
+Second, contiguous sequences which do not contain marker sequences are not included among contamination estimates <span class="citation" data-cites="iTI5DiYU">[<a href="#ref-iTI5DiYU" role="doc-biblioref">17</a>]</span>.
+Charcoal avoids these pitfalls by using k-mers, which are sampled evenly across the genome <span class="citation" data-cites="IadOz4ol">[<a href="#ref-IadOz4ol" role="doc-biblioref">27</a>]</span>.
+We envisage charcoal acting as a complementary analysis tool to CheckM.</p>
+<p>While charcoal avoids the above biases, it is itself biased against detecting contamination in very short contigs.
+By default, a minimum of three k-mers must be taxonomically annotated on a contig for a contig to be removed; because contigs are first sketched, many short contigs will not contain three k-mers.</p>
+<h2 id="future-work">Future work</h2>
+<ul>
+<li>strain heterogeneity estimation or strain insertion in newick tree using prefetch &amp; clean results</li>
+<li>completeness estimation, potentially via comparison to conspecifics via genome size</li>
+<li>database with eukaryotic sequences</li>
+<li>estimation via protein sequences for divergent organisms not well represented in databases</li>
+</ul>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>fastani is an accepted way to do average nucleotide identity calculate, and it relies on k-mers.</li>
+<li>from checkm paper:
+&gt; Bias in genome quality estimates: Quality estimates based on individual marker genes or collocated marker sets exhibit a bias resulting in completeness being overestimated and contamination being underestimated. This bias is the result of marker genes residing on foreign DNA that are otherwise absent in a genome being mistakenly interpreted as an indication of increased completeness as opposed to contamination.</li>
+<li>we don’t deal with strain heterogeneity, as this occurs below the species-level aggregation in the LCA</li>
+</ul>
 <h2 class="page_break_before" id="references">References</h2>
 <!-- Explicitly insert bibliography here -->
 <div id="refs" class="references csl-bib-body" role="doc-bibliography">
@@ -511,6 +644,73 @@ useful for <em>warnings</em> - <a href="https://manubot.org/">manubot.org</a></s
 </div>
 <div id="ref-YuJbg3zO" class="csl-entry" role="doc-biblioentry">
 <div class="csl-left-margin">8. </div><div class="csl-right-inline"><strong>Open collaborative writing with Manubot</strong> <div class="csl-block">Daniel S Himmelstein, Vincent Rubinetti, David R Slochower, Dongbo Hu, Venkat S Malladi, Casey S Greene, Anthony Gitter</div> <em>PLOS Computational Biology</em> (2019-06-24) <a href="https://doi.org/c7np">https://doi.org/c7np</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1371/journal.pcbi.1007128">10.1371/journal.pcbi.1007128</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/31233491">31233491</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6611653">PMC6611653</a></div></div>
+</div>
+<div id="ref-g228aulb" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">9. </div><div class="csl-right-inline"><strong>A new view of the tree of life</strong> <div class="csl-block">Laura A Hug, Brett J Baker, Karthik Anantharaman, Christopher T Brown, Alexander J Probst, Cindy J Castelle, Cristina N Butterfield, Alex W Hernsdorf, Yuki Amano, Kotaro Ise, … Jillian F Banfield</div> <em>Nature Microbiology</em> (2016-04-11) <a href="https://doi.org/bpkh">https://doi.org/bpkh</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/nmicrobiol.2016.48">10.1038/nmicrobiol.2016.48</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/27572647">27572647</a></div></div>
+</div>
+<div id="ref-hMM4KrP3" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">10. </div><div class="csl-right-inline"><strong>A genomic catalog of Earth’s microbiomes</strong> <div class="csl-block">Stephen Nayfach, Simon Roux, Rekha Seshadri, Daniel Udwary, Neha Varghese, Frederik Schulz, Dongying Wu, David Paez-Espino, I-Min Chen, Marcel Huntemann, … </div> <em>Nature Biotechnology</em> (2020-11-09) <a href="https://doi.org/ghjh4b">https://doi.org/ghjh4b</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/s41587-020-0718-6">10.1038/s41587-020-0718-6</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/33169036">33169036</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8041624">PMC8041624</a></div></div>
+</div>
+<div id="ref-1EDN9Tt7p" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">11. </div><div class="csl-right-inline"><strong>Metagenomic compendium of 189,680 DNA viruses from the human gut microbiome</strong> <div class="csl-block">Stephen Nayfach, David Páez-Espino, Lee Call, Soo Jen Low, Hila Sberro, Natalia N Ivanova, Amy D Proal, Michael A Fischbach, Ami S Bhatt, Philip Hugenholtz, Nikos C Kyrpides</div> <em>Nature Microbiology</em> (2021-06-24) <a href="https://doi.org/gkx3md">https://doi.org/gkx3md</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/s41564-021-00928-6">10.1038/s41564-021-00928-6</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/34168315">34168315</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8241571">PMC8241571</a></div></div>
+</div>
+<div id="ref-F7RexqdF" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">12. </div><div class="csl-right-inline"><strong>Community structure and metabolism through reconstruction of microbial genomes from the environment</strong> <div class="csl-block">Gene W Tyson, Jarrod Chapman, Philip Hugenholtz, Eric E Allen, Rachna J Ram, Paul M Richardson, Victor V Solovyev, Edward M Rubin, Daniel S Rokhsar, Jillian F Banfield</div> <em>Nature</em> (2004-02-01) <a href="https://doi.org/b85j5j">https://doi.org/b85j5j</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/nature02340">10.1038/nature02340</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/14961025">14961025</a></div></div>
+</div>
+<div id="ref-1FDpZ7jSj" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">13. </div><div class="csl-right-inline"><strong>Extensive Unexplored Human Microbiome Diversity Revealed by Over 150,000 Genomes from Metagenomes Spanning Age, Geography, and Lifestyle</strong> <div class="csl-block">Edoardo Pasolli, Francesco Asnicar, Serena Manara, Moreno Zolfo, Nicolai Karcher, Federica Armanini, Francesco Beghini, Paolo Manghi, Adrian Tett, Paolo Ghensi, … Nicola Segata</div> <em>Cell</em> (2019-01) <a href="https://doi.org/gfthv3">https://doi.org/gfthv3</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1016/j.cell.2019.01.001">10.1016/j.cell.2019.01.001</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/30661755">30661755</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6349461">PMC6349461</a></div></div>
+</div>
+<div id="ref-x94unSVP" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">14. </div><div class="csl-right-inline"><strong>A unified catalog of 204,938 reference genomes from the human gut microbiome</strong> <div class="csl-block">Alexandre Almeida, Stephen Nayfach, Miguel Boland, Francesco Strozzi, Martin Beracochea, Zhou Jason Shi, Katherine S Pollard, Ekaterina Sakharova, Donovan H Parks, Philip Hugenholtz, … Robert D Finn</div> <em>Nature Biotechnology</em> (2020-07-20) <a href="https://doi.org/gg5hgn">https://doi.org/gg5hgn</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/s41587-020-0603-3">10.1038/s41587-020-0603-3</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/32690973">32690973</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7801254">PMC7801254</a></div></div>
+</div>
+<div id="ref-wrBRBdFb" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">15. </div><div class="csl-right-inline"><strong>Recovery of nearly 8,000 metagenome-assembled genomes substantially expands the tree of life</strong> <div class="csl-block">Donovan H Parks, Christian Rinke, Maria Chuvochina, Pierre-Alain Chaumeil, Ben J Woodcroft, Paul N Evans, Philip Hugenholtz, Gene W Tyson</div> <em>Nature Microbiology</em> (2017-09-11) <a href="https://doi.org/cczd">https://doi.org/cczd</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/s41564-017-0012-7">10.1038/s41564-017-0012-7</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/28894102">28894102</a></div></div>
+</div>
+<div id="ref-EsN8kZ60" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">16. </div><div class="csl-right-inline"><strong>proGenomes2: an improved database for accurate and consistent habitat, taxonomic and functional annotations of prokaryotic genomes</strong> <div class="csl-block">Daniel R Mende, Ivica Letunic, Oleksandr M Maistrenko, Thomas SB Schmidt, Alessio Milanese, Lucas Paoli, Ana Hernández-Plaza, Askarbek N Orakov, Sofia K Forslund, Shinichi Sunagawa, … Peer Bork</div> <em>Nucleic Acids Research</em> (2019-10-24) <a href="https://doi.org/ggctnd">https://doi.org/ggctnd</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/nar/gkz1002">10.1093/nar/gkz1002</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/31647096">31647096</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7145564">PMC7145564</a></div></div>
+</div>
+<div id="ref-iTI5DiYU" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">17. </div><div class="csl-right-inline"><strong>CheckM: assessing the quality of microbial genomes recovered from isolates, single cells, and metagenomes</strong> <div class="csl-block">Donovan H Parks, Michael Imelfort, Connor T Skennerton, Philip Hugenholtz, Gene W Tyson</div> <em>Genome Research</em> (2015-05-14) <a href="https://doi.org/bb8q">https://doi.org/bb8q</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1101/gr.186072.114">10.1101/gr.186072.114</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/25977477">25977477</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4484387">PMC4484387</a></div></div>
+</div>
+<div id="ref-S53q1T30" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">18. </div><div class="csl-right-inline"><strong>BUSCO: assessing genome assembly and annotation completeness with single-copy orthologs</strong> <div class="csl-block">Felipe A Simão, Robert M Waterhouse, Panagiotis Ioannidis, Evgenia V Kriventseva, Evgeny M Zdobnov</div> <em>Bioinformatics</em> (2015-06-09) <a href="https://doi.org/gfznpw">https://doi.org/gfznpw</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/bioinformatics/btv351">10.1093/bioinformatics/btv351</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/26059717">26059717</a></div></div>
+</div>
+<div id="ref-bKxX6Whi" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">19. </div><div class="csl-right-inline"><strong>PhyloSift: phylogenetic analysis of genomes and metagenomes</strong> <div class="csl-block">Aaron E Darling, Guillaume Jospin, Eric Lowe, Frederick A Matsen IV, Holly M Bik, Jonathan A Eisen</div> <em>PeerJ</em> (2014-01-09) <a href="https://doi.org/gddvvt">https://doi.org/gddvvt</a> <div class="csl-block">DOI: <a href="https://doi.org/10.7717/peerj.243">10.7717/peerj.243</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/24482762">24482762</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3897386">PMC3897386</a></div></div>
+</div>
+<div id="ref-We2Hi8xm" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">20. </div><div class="csl-right-inline"><strong>Rokubacteria: Genomic Giants among the Uncultured Bacterial Phyla</strong> <div class="csl-block">Eric D Becraft, Tanja Woyke, Jessica Jarett, Natalia Ivanova, Filipa Godoy-Vitorino, Nicole Poulton, Julia M Brown, Joseph Brown, MCY Lau, Tullis Onstott, … Ramunas Stepanauskas</div> <em>Frontiers in Microbiology</em> (2017-11-28) <a href="https://doi.org/gcn68w">https://doi.org/gcn68w</a> <div class="csl-block">DOI: <a href="https://doi.org/10.3389/fmicb.2017.02264">10.3389/fmicb.2017.02264</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/29234309">29234309</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5712423">PMC5712423</a></div></div>
+</div>
+<div id="ref-SOBt1t7t" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">21. </div><div class="csl-right-inline"><strong>Contamination detection in genomic data: more is not enough</strong> <div class="csl-block">Luc Cornet, Denis Baurain</div> <em>Genome Biology</em> (2022-02-21) <a href="https://doi.org/gpkc9r">https://doi.org/gpkc9r</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1186/s13059-022-02619-9">10.1186/s13059-022-02619-9</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/35189924">35189924</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8862208">PMC8862208</a></div></div>
+</div>
+<div id="ref-HDwM5UZ7" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">22. </div><div class="csl-right-inline"><strong>GUNC: detection of chimerism and contamination in prokaryotic genomes</strong> <div class="csl-block">Askarbek Orakov, Anthony Fullam, Luis Pedro Coelho, Supriya Khedkar, Damian Szklarczyk, Daniel R Mende, Thomas SB Schmidt, Peer Bork</div> <em>Genome Biology</em> (2021-06-13) <a href="https://doi.org/gk5s96">https://doi.org/gk5s96</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1186/s13059-021-02393-0">10.1186/s13059-021-02393-0</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/34120611">34120611</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8201837">PMC8201837</a></div></div>
+</div>
+<div id="ref-XxzzVxWw" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">23. </div><div class="csl-right-inline"><strong>Terminating contamination: large-scale search identifies more than 2,000,000 contaminated entries in GenBank</strong> <div class="csl-block">Martin Steinegger, Steven L Salzberg</div> <em>Genome Biology</em> (2020-05-12) <a href="https://doi.org/ggww3q">https://doi.org/ggww3q</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1186/s13059-020-02023-1">10.1186/s13059-020-02023-1</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/32398145">32398145</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7218494">PMC7218494</a></div></div>
+</div>
+<div id="ref-ecAUFQCt" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">24. </div><div class="csl-right-inline"><strong>New insights from uncultivated genomes of the global human gut microbiome</strong> <div class="csl-block">Stephen Nayfach, Zhou Jason Shi, Rekha Seshadri, Katherine S Pollard, Nikos C Kyrpides</div> <em>Nature</em> (2019-03-13) <a href="https://doi.org/gfwwg2">https://doi.org/gfwwg2</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1038/s41586-019-1058-x">10.1038/s41586-019-1058-x</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/30867587">30867587</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6784871">PMC6784871</a></div></div>
+</div>
+<div id="ref-3aGrLq0Q" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">25. </div><div class="csl-right-inline"><strong>BlobTools: Interrogation of genome assemblies</strong> <div class="csl-block">Dominik R Laetsch, Mark L Blaxter</div> <em>F1000Research</em> (2017-07-31) <a href="https://doi.org/gffk7z">https://doi.org/gffk7z</a> <div class="csl-block">DOI: <a href="https://doi.org/10.12688/f1000research.12232.1">10.12688/f1000research.12232.1</a></div></div>
+</div>
+<div id="ref-mAjlUXL2" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">26. </div><div class="csl-right-inline"><strong>MetaPalette: a
+&lt;i&gt;k&lt;/i&gt;
+-mer Painting Approach for Metagenomic Taxonomic Profiling and Quantification of Novel Strain Variation</strong> <div class="csl-block">David Koslicki, Daniel Falush</div> <em>mSystems</em> (2016-06-28) <a href="https://doi.org/gg3gbd">https://doi.org/gg3gbd</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1128/msystems.00020-16">10.1128/msystems.00020-16</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/27822531">27822531</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5069763">PMC5069763</a></div></div>
+</div>
+<div id="ref-IadOz4ol" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">27. </div><div class="csl-right-inline"><strong>Lightweight compositional analysis of metagenomes with FracMinHash and minimum metagenome covers</strong> <div class="csl-block">Luiz Irber, Phillip T Brooks, Taylor Reiter, NTessa Pierce-Ward, Mahmudur Rahman Hera, David Koslicki, CTitus Brown</div> <em>Cold Spring Harbor Laboratory</em> (2022-01-12) <a href="https://doi.org/gn34zt">https://doi.org/gn34zt</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1101/2022.01.11.475838">10.1101/2022.01.11.475838</a></div></div>
+</div>
+<div id="ref-iMYJIG48" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">28. </div><div class="csl-right-inline"><strong>A fast adaptive algorithm for computing whole-genome homology maps</strong> <div class="csl-block">Chirag Jain, Sergey Koren, Alexander Dilthey, Adam M Phillippy, Srinivas Aluru</div> <em>Bioinformatics</em> (2018-09-01) <a href="https://doi.org/gd9ndx">https://doi.org/gd9ndx</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1093/bioinformatics/bty597">10.1093/bioinformatics/bty597</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/30423094">30423094</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6129286">PMC6129286</a></div></div>
+</div>
+<div id="ref-NV3AwVUt" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">29. </div><div class="csl-right-inline"><strong>Using
+&lt;scp&gt;MUMmer&lt;/scp&gt;
+to Identify Similar Regions in Large Sequence Sets</strong> <div class="csl-block">Arthur L Delcher, Steven L Salzberg, Adam M Phillippy</div> <em>Current Protocols in Bioinformatics</em> (2003-01) <a href="https://doi.org/dks6c5">https://doi.org/dks6c5</a> <div class="csl-block">DOI: <a href="https://doi.org/10.1002/0471250953.bi1003s00">10.1002/0471250953.bi1003s00</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/18428693">18428693</a></div></div>
 </div>
 </div>
 <!-- default theme -->
