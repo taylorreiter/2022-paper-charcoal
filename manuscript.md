@@ -7,8 +7,11 @@ keywords:
 lang: en-US
 date-meta: '2022-06-15'
 author-meta:
-- John Doe
-- Jane Roe
+- Taylor E. Reiter
+- N. Tessa Pierce-Ward
+- Luiz Irber
+- Erich M. Schwarz
+- C. Titus Brown
 header-includes: |-
   <!--
   Manubot generated metadata rendered from header-includes-template.html.
@@ -27,23 +30,34 @@ header-includes: |-
   <meta name="dc.publisher" content="Manubot" />
   <meta name="citation_journal_title" content="Manubot" />
   <meta name="citation_technical_report_institution" content="Manubot" />
-  <meta name="citation_author" content="John Doe" />
-  <meta name="citation_author_institution" content="Department of Something, University of Whatever" />
-  <meta name="citation_author_orcid" content="XXXX-XXXX-XXXX-XXXX" />
-  <meta name="twitter:creator" content="@johndoe" />
-  <meta name="citation_author" content="Jane Roe" />
-  <meta name="citation_author_institution" content="Department of Something, University of Whatever" />
-  <meta name="citation_author_institution" content="Department of Whatever, University of Something" />
-  <meta name="citation_author_orcid" content="XXXX-XXXX-XXXX-XXXX" />
+  <meta name="citation_author" content="Taylor E. Reiter" />
+  <meta name="citation_author_institution" content="Department of Population Health and Reproduction, University of California, Davis" />
+  <meta name="citation_author_orcid" content="0000-0002-7388-421X" />
+  <meta name="twitter:creator" content="@ReiterTaylor" />
+  <meta name="citation_author" content="N. Tessa Pierce-Ward" />
+  <meta name="citation_author_institution" content="Department of Population Health and Reproduction, University of California, Davis" />
+  <meta name="citation_author_orcid" content="0000-0002-2942-5331" />
+  <meta name="twitter:creator" content="@saltyscientist" />
+  <meta name="citation_author" content="Luiz Irber" />
+  <meta name="citation_author_institution" content="Graduate Group in Computer Science, UC Davis" />
+  <meta name="citation_author_institution" content="Department of Population Health and Reproduction, University of California, Davis" />
+  <meta name="citation_author_orcid" content="0000-0003-4371-9659" />
+  <meta name="twitter:creator" content="@luizirber" />
+  <meta name="citation_author" content="Erich M. Schwarz" />
+  <meta name="citation_author_institution" content="Department of Molecular Biology and Genetics, Cornell University" />
+  <meta name="citation_author_orcid" content="0000-0003-3151-4381" />
+  <meta name="citation_author" content="C. Titus Brown" />
+  <meta name="citation_author_institution" content="Department of Population Health and Reproduction, University of California, Davis" />
+  <meta name="citation_author_orcid" content="0000-0001-6001-2677" />
   <link rel="canonical" href="https://taylorreiter.github.io/2022-paper-charcoal/" />
   <meta property="og:url" content="https://taylorreiter.github.io/2022-paper-charcoal/" />
   <meta property="twitter:url" content="https://taylorreiter.github.io/2022-paper-charcoal/" />
   <meta name="citation_fulltext_html_url" content="https://taylorreiter.github.io/2022-paper-charcoal/" />
   <meta name="citation_pdf_url" content="https://taylorreiter.github.io/2022-paper-charcoal/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://taylorreiter.github.io/2022-paper-charcoal/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://taylorreiter.github.io/2022-paper-charcoal/v/8634838e540a6c8c92e02e852bca7e45c50c2dcc/" />
-  <meta name="manubot_html_url_versioned" content="https://taylorreiter.github.io/2022-paper-charcoal/v/8634838e540a6c8c92e02e852bca7e45c50c2dcc/" />
-  <meta name="manubot_pdf_url_versioned" content="https://taylorreiter.github.io/2022-paper-charcoal/v/8634838e540a6c8c92e02e852bca7e45c50c2dcc/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://taylorreiter.github.io/2022-paper-charcoal/v/7ba837ff615d4acef6849b01a3aa2fbe96461fd1/" />
+  <meta name="manubot_html_url_versioned" content="https://taylorreiter.github.io/2022-paper-charcoal/v/7ba837ff615d4acef6849b01a3aa2fbe96461fd1/" />
+  <meta name="manubot_pdf_url_versioned" content="https://taylorreiter.github.io/2022-paper-charcoal/v/7ba837ff615d4acef6849b01a3aa2fbe96461fd1/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -65,9 +79,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://taylorreiter.github.io/2022-paper-charcoal/v/8634838e540a6c8c92e02e852bca7e45c50c2dcc/))
+([permalink](https://taylorreiter.github.io/2022-paper-charcoal/v/7ba837ff615d4acef6849b01a3aa2fbe96461fd1/))
 was automatically generated
-from [taylorreiter/2022-paper-charcoal@8634838](https://github.com/taylorreiter/2022-paper-charcoal/tree/8634838e540a6c8c92e02e852bca7e45c50c2dcc)
+from [taylorreiter/2022-paper-charcoal@7ba837f](https://github.com/taylorreiter/2022-paper-charcoal/tree/7ba837ff615d4acef6849b01a3aa2fbe96461fd1)
 on June 15, 2022.
 </em></small>
 
@@ -75,25 +89,56 @@ on June 15, 2022.
 
 
 
-+ **John Doe**<br>
++ **Taylor E. Reiter**<br>
     ![ORCID icon](images/orcid.svg){.inline_icon width=16 height=16}
-    [XXXX-XXXX-XXXX-XXXX](https://orcid.org/XXXX-XXXX-XXXX-XXXX)
+    [0000-0002-7388-421X](https://orcid.org/0000-0002-7388-421X)
     · ![GitHub icon](images/github.svg){.inline_icon width=16 height=16}
-    [johndoe](https://github.com/johndoe)
+    [taylorreiter](https://github.com/taylorreiter)
     · ![Twitter icon](images/twitter.svg){.inline_icon width=16 height=16}
-    [johndoe](https://twitter.com/johndoe)<br>
+    [ReiterTaylor](https://twitter.com/ReiterTaylor)<br>
   <small>
-     Department of Something, University of Whatever
-     · Funded by Grant XXXXXXXX
+     Department of Population Health and Reproduction, University of California, Davis
   </small>
 
-+ **Jane Roe**<br>
++ **N. Tessa Pierce-Ward**<br>
     ![ORCID icon](images/orcid.svg){.inline_icon width=16 height=16}
-    [XXXX-XXXX-XXXX-XXXX](https://orcid.org/XXXX-XXXX-XXXX-XXXX)
+    [0000-0002-2942-5331](https://orcid.org/0000-0002-2942-5331)
     · ![GitHub icon](images/github.svg){.inline_icon width=16 height=16}
-    [janeroe](https://github.com/janeroe)<br>
+    [bluegenes](https://github.com/bluegenes)
+    · ![Twitter icon](images/twitter.svg){.inline_icon width=16 height=16}
+    [saltyscientist](https://twitter.com/saltyscientist)<br>
   <small>
-     Department of Something, University of Whatever; Department of Whatever, University of Something
+     Department of Population Health and Reproduction, University of California, Davis
+     · Funded by NSF 1711984
+  </small>
+
++ **Luiz Irber**<br>
+    ![ORCID icon](images/orcid.svg){.inline_icon width=16 height=16}
+    [0000-0003-4371-9659](https://orcid.org/0000-0003-4371-9659)
+    · ![GitHub icon](images/github.svg){.inline_icon width=16 height=16}
+    [luizirber](https://github.com/luizirber)
+    · ![Twitter icon](images/twitter.svg){.inline_icon width=16 height=16}
+    [luizirber](https://twitter.com/luizirber)<br>
+  <small>
+     Graduate Group in Computer Science, UC Davis; Department of Population Health and Reproduction, University of California, Davis
+  </small>
+
++ **Erich M. Schwarz**<br>
+    ![ORCID icon](images/orcid.svg){.inline_icon width=16 height=16}
+    [0000-0003-3151-4381](https://orcid.org/0000-0003-3151-4381)
+    · ![GitHub icon](images/github.svg){.inline_icon width=16 height=16}
+    [SchwarzEM](https://github.com/SchwarzEM)<br>
+  <small>
+     Department of Molecular Biology and Genetics, Cornell University
+  </small>
+
++ **C. Titus Brown**<br>
+    ![ORCID icon](images/orcid.svg){.inline_icon width=16 height=16}
+    [0000-0001-6001-2677](https://orcid.org/0000-0001-6001-2677)
+    · ![GitHub icon](images/github.svg){.inline_icon width=16 height=16}
+    [ctb](https://github.com/ctb)<br>
+  <small>
+     Department of Population Health and Reproduction, University of California, Davis
   </small>
 
 
