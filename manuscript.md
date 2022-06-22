@@ -5,7 +5,7 @@ keywords:
 - publishing
 - manubot
 lang: en-US
-date-meta: '2022-06-15'
+date-meta: '2022-06-22'
 author-meta:
 - Taylor E. Reiter
 - N. Tessa Pierce-Ward
@@ -22,8 +22,8 @@ header-includes: |-
   <meta name="citation_title" content="Manuscript Title" />
   <meta property="og:title" content="Manuscript Title" />
   <meta property="twitter:title" content="Manuscript Title" />
-  <meta name="dc.date" content="2022-06-15" />
-  <meta name="citation_publication_date" content="2022-06-15" />
+  <meta name="dc.date" content="2022-06-22" />
+  <meta name="citation_publication_date" content="2022-06-22" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -55,9 +55,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://taylorreiter.github.io/2022-paper-charcoal/" />
   <meta name="citation_pdf_url" content="https://taylorreiter.github.io/2022-paper-charcoal/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://taylorreiter.github.io/2022-paper-charcoal/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://taylorreiter.github.io/2022-paper-charcoal/v/7ba837ff615d4acef6849b01a3aa2fbe96461fd1/" />
-  <meta name="manubot_html_url_versioned" content="https://taylorreiter.github.io/2022-paper-charcoal/v/7ba837ff615d4acef6849b01a3aa2fbe96461fd1/" />
-  <meta name="manubot_pdf_url_versioned" content="https://taylorreiter.github.io/2022-paper-charcoal/v/7ba837ff615d4acef6849b01a3aa2fbe96461fd1/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://taylorreiter.github.io/2022-paper-charcoal/v/20d6b49b6c9ef0853a5da2ba97aad81993ec2a15/" />
+  <meta name="manubot_html_url_versioned" content="https://taylorreiter.github.io/2022-paper-charcoal/v/20d6b49b6c9ef0853a5da2ba97aad81993ec2a15/" />
+  <meta name="manubot_pdf_url_versioned" content="https://taylorreiter.github.io/2022-paper-charcoal/v/20d6b49b6c9ef0853a5da2ba97aad81993ec2a15/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -79,10 +79,10 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://taylorreiter.github.io/2022-paper-charcoal/v/7ba837ff615d4acef6849b01a3aa2fbe96461fd1/))
+([permalink](https://taylorreiter.github.io/2022-paper-charcoal/v/20d6b49b6c9ef0853a5da2ba97aad81993ec2a15/))
 was automatically generated
-from [taylorreiter/2022-paper-charcoal@7ba837f](https://github.com/taylorreiter/2022-paper-charcoal/tree/7ba837ff615d4acef6849b01a3aa2fbe96461fd1)
-on June 15, 2022.
+from [taylorreiter/2022-paper-charcoal@20d6b49](https://github.com/taylorreiter/2022-paper-charcoal/tree/20d6b49b6c9ef0853a5da2ba97aad81993ec2a15)
+on June 22, 2022.
 </em></small>
 
 ## Authors
@@ -204,7 +204,7 @@ We envisage that charcoal will complement marker gene-based approaches for conta
 ![**Summary of steps used to decontaminate genomes with charcoal.**
 In the first stage of the pipeline, contamination detection occurs by comparing the taxonomic assignment of each contig in a genome against all other contigs. 
 Contigs with inconsistent taxonomy are flagged as contaminants, by default if they differ at the order level or above.
-The results of this step are summarized to report the contaminating genomes, the number of contaminant contigs and basepairs at each level of taxonomy, and other metrics like the fraction of the genome that was identifiable and the fraction that was assignable to the majority lineage.
+The results of this step are summarized to report the contaminating genomes, the number of contaminant contigs and base pairs at each level of taxonomy, and other metrics like the fraction of the genome that was identifiable and the fraction that was assignable to the majority lineage.
 The outputs of the first stage of the pipeline can then be used in any of three additional reporting steps.
 First, contamination can be verified by aligning the contaminant contigs against their identified matching reference genome, and the mappings can be visualized.
 Second, an html document can be produced that gives an overview of the contamination in each genome.
@@ -252,17 +252,50 @@ Reporting depends on mummer, papermill, notebook, and plotly [@doi:10.1002/04712
 The source code is available at github.com/dib-lab/charcoal.
 ZENODO DOI.
 
-### Datasets and benchmarking
+## Datasets and benchmarking
 
+We first use charcoal to decontaminate GTDB rs207.
 
 # Results
 
+## Charcoal detected and removed contamination from roughly one quarter of GTDB genomes
+
+![**Charcoal identified contamination in approximately one quarter of GTDB rs207 genomes, distributed generally across different types of genomes.**
+**A)** Bar plot depicting the number of genomes in GTDB contaminated at the order level.
+**B)** Bar plot separating genomes in GTDB by their inclusion in NCBI's RefSeq. Both GenBank and RefSeq genomes are contaminated.
+**C)** Bar plot separating representative genomes in GTDB from non-representative genomes. While some representative genomes are contaminated, non-representative genomes are more likely to be contaminated.
+**D)** Violin plots depicting the mean contig length within genomes in GTDB, separated by contamination profile. Genomes with longer contigs are less likely to be contaminated. On average, the contigs in contaminated genomes were 380,504 base pairs shorter than contigs in non-contaminated genomes.
+**E)** Bar plot that separates genomes by NCBI category which specifies where source material was derived from.
+**F)** Bar plot depicting the number of genomes in each order, colored by contamination status. Genomes are grouped by taxonomic lineage up to the order level.
+](images/charcoal_gtdb.png){#fig:charcoal_gtdb}
+
+Using charcoal to detect and remove contamination, approximately 26% of GTDB rs207 genomes were contaminated at the order level or above (**Figure @fig:charcoal_gtdb A**).
+Contamination was identified 
+
+## Charcoal and CheckM identify the same set of not contaminated genomes
+
+Charcoal is more conservative than CheckM contamination estimation at the order level.
+whereas 80.2% of genomes are estimated to have some contamination using CheckM.
+    + Both tools agree on the majority of genomes with no contamination
+
+At the family level, charcoal identified contamination in XX% of genomes, suggesting that adjusting taxonomy may improve agreement with checkm.
+
+Do plot -- at what % checkm contam best overlaps with order level charcoal?
+
++ run checkm on clean
+
+## Databases
+
++ gtdb rs207 reps vs gtdb rs202 reps
++ gtdb rs202 reps vs gtdb rs202 full (replace evnetually with rs207)
+    + short contigs missed
+    + ram considerations
+    + future development: species-level database
+
 **old results outline:**
-+ charcoal estimates low contamination in non-representative GTDB genomes
-+ charcoal assigns correct taxonomy to all non-representative GTDB genomes
+
 + charcoal vs. checkm
   + charcoal vs. checkm: mgnify, tara
-  + checkm on charcoal clean
   + prokka on charcoal dirty
 + charcoal vs. refineM and magpurify
 + verification of contamination/contam case studies
