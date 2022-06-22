@@ -1,9 +1,9 @@
 ---
-title: "Manuscript Title"
+title: "Charcoal: filtering contamination in metagenome-assembled genome bins and other genomes"
 keywords:
-  - markdown
-  - publishing
-  - manubot
+  - contamination
+  - genome
+  - k-mer
 lang: en-US
 authors:
   - github: taylorreiter
