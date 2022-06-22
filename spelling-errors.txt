@@ -1,4 +1,5 @@
 archaeal
+bakta
 BAM
 benchmarking
 BlobTools
@@ -51,7 +52,7 @@ plasmids
 plotly
 prefetch
 prokka
-RefineM
+refineM
 RefSeq
 Reiter
 ReiterTaylor
@@ -59,10 +60,11 @@ saltyscientist
 Schwarz
 SchwarzEM
 snakemake
-Sourmash
+sourmash
 spacegraphcats
 taxonomically
 taylorreiter
 tetramernucleotide
+TODO
 UC
 ZENODO
