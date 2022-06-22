@@ -1,7 +1,7 @@
 # Output directory containing the formatted manuscript
 
 The [`gh-pages`](https://github.com/taylorreiter/2022-paper-charcoal/tree/gh-pages) branch hosts the contents of this directory at <https://taylorreiter.github.io/2022-paper-charcoal/>.
-The permalink for this webpage version is <https://taylorreiter.github.io/2022-paper-charcoal/v/02d100a87f59e894e933c2e7d86ceed3aae5a0b3/>.
+The permalink for this webpage version is <https://taylorreiter.github.io/2022-paper-charcoal/v/e8621d1a084e76f8b148e969e9fe98cdd730b2c8/>.
 To redirect to the permalink for the latest manuscript version at anytime, use the link <https://taylorreiter.github.io/2022-paper-charcoal/v/freeze/>.
 
 ## Files
@@ -35,4 +35,4 @@ Verifying timestamps with the `ots verify` command requires running a local bitc
 ## Source
 
 The manuscripts in this directory were built from
-[`02d100a87f59e894e933c2e7d86ceed3aae5a0b3`](https://github.com/taylorreiter/2022-paper-charcoal/commit/02d100a87f59e894e933c2e7d86ceed3aae5a0b3).
+[`e8621d1a084e76f8b148e969e9fe98cdd730b2c8`](https://github.com/taylorreiter/2022-paper-charcoal/commit/e8621d1a084e76f8b148e969e9fe98cdd730b2c8).
