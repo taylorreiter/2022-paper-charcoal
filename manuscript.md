@@ -1,9 +1,9 @@
 ---
-title: Manuscript Title
+title: 'Charcoal: filtering contamination in metagenome-assembled genome bins and other genomes'
 keywords:
-- markdown
-- publishing
-- manubot
+- contamination
+- genome
+- k-mer
 lang: en-US
 date-meta: '2022-06-22'
 author-meta:
@@ -18,10 +18,10 @@ header-includes: |-
   Suggest improvements at https://github.com/manubot/manubot/blob/main/manubot/process/header-includes-template.html
   -->
   <meta name="dc.format" content="text/html" />
-  <meta name="dc.title" content="Manuscript Title" />
-  <meta name="citation_title" content="Manuscript Title" />
-  <meta property="og:title" content="Manuscript Title" />
-  <meta property="twitter:title" content="Manuscript Title" />
+  <meta name="dc.title" content="Charcoal: filtering contamination in metagenome-assembled genome bins and other genomes" />
+  <meta name="citation_title" content="Charcoal: filtering contamination in metagenome-assembled genome bins and other genomes" />
+  <meta property="og:title" content="Charcoal: filtering contamination in metagenome-assembled genome bins and other genomes" />
+  <meta property="twitter:title" content="Charcoal: filtering contamination in metagenome-assembled genome bins and other genomes" />
   <meta name="dc.date" content="2022-06-22" />
   <meta name="citation_publication_date" content="2022-06-22" />
   <meta name="dc.language" content="en-US" />
@@ -55,9 +55,9 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://taylorreiter.github.io/2022-paper-charcoal/" />
   <meta name="citation_pdf_url" content="https://taylorreiter.github.io/2022-paper-charcoal/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://taylorreiter.github.io/2022-paper-charcoal/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://taylorreiter.github.io/2022-paper-charcoal/v/02d100a87f59e894e933c2e7d86ceed3aae5a0b3/" />
-  <meta name="manubot_html_url_versioned" content="https://taylorreiter.github.io/2022-paper-charcoal/v/02d100a87f59e894e933c2e7d86ceed3aae5a0b3/" />
-  <meta name="manubot_pdf_url_versioned" content="https://taylorreiter.github.io/2022-paper-charcoal/v/02d100a87f59e894e933c2e7d86ceed3aae5a0b3/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://taylorreiter.github.io/2022-paper-charcoal/v/e8621d1a084e76f8b148e969e9fe98cdd730b2c8/" />
+  <meta name="manubot_html_url_versioned" content="https://taylorreiter.github.io/2022-paper-charcoal/v/e8621d1a084e76f8b148e969e9fe98cdd730b2c8/" />
+  <meta name="manubot_pdf_url_versioned" content="https://taylorreiter.github.io/2022-paper-charcoal/v/e8621d1a084e76f8b148e969e9fe98cdd730b2c8/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -79,9 +79,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://taylorreiter.github.io/2022-paper-charcoal/v/02d100a87f59e894e933c2e7d86ceed3aae5a0b3/))
+([permalink](https://taylorreiter.github.io/2022-paper-charcoal/v/e8621d1a084e76f8b148e969e9fe98cdd730b2c8/))
 was automatically generated
-from [taylorreiter/2022-paper-charcoal@02d100a](https://github.com/taylorreiter/2022-paper-charcoal/tree/02d100a87f59e894e933c2e7d86ceed3aae5a0b3)
+from [taylorreiter/2022-paper-charcoal@e8621d1](https://github.com/taylorreiter/2022-paper-charcoal/tree/e8621d1a084e76f8b148e969e9fe98cdd730b2c8)
 on June 22, 2022.
 </em></small>
 

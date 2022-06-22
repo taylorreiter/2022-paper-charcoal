@@ -38,7 +38,7 @@ mashmap
 mer
 mers
 metagenome
-metagenomic
+Metagenomic
 Metagenomics
 mgnify
 NCBI
