@@ -81,9 +81,9 @@
   <meta name="citation_fulltext_html_url" content="https://taylorreiter.github.io/2022-paper-charcoal/" />
   <meta name="citation_pdf_url" content="https://taylorreiter.github.io/2022-paper-charcoal/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://taylorreiter.github.io/2022-paper-charcoal/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://taylorreiter.github.io/2022-paper-charcoal/v/20d6b49b6c9ef0853a5da2ba97aad81993ec2a15/" />
-  <meta name="manubot_html_url_versioned" content="https://taylorreiter.github.io/2022-paper-charcoal/v/20d6b49b6c9ef0853a5da2ba97aad81993ec2a15/" />
-  <meta name="manubot_pdf_url_versioned" content="https://taylorreiter.github.io/2022-paper-charcoal/v/20d6b49b6c9ef0853a5da2ba97aad81993ec2a15/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://taylorreiter.github.io/2022-paper-charcoal/v/02d100a87f59e894e933c2e7d86ceed3aae5a0b3/" />
+  <meta name="manubot_html_url_versioned" content="https://taylorreiter.github.io/2022-paper-charcoal/v/02d100a87f59e894e933c2e7d86ceed3aae5a0b3/" />
+  <meta name="manubot_pdf_url_versioned" content="https://taylorreiter.github.io/2022-paper-charcoal/v/02d100a87f59e894e933c2e7d86ceed3aae5a0b3/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
@@ -100,9 +100,9 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://taylorreiter.github.io/2022-paper-charcoal/v/20d6b49b6c9ef0853a5da2ba97aad81993ec2a15/">permalink</a>)
+(<a href="https://taylorreiter.github.io/2022-paper-charcoal/v/02d100a87f59e894e933c2e7d86ceed3aae5a0b3/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/taylorreiter/2022-paper-charcoal/tree/20d6b49b6c9ef0853a5da2ba97aad81993ec2a15">taylorreiter/2022-paper-charcoal@20d6b49</a>
+from <a href="https://github.com/taylorreiter/2022-paper-charcoal/tree/02d100a87f59e894e933c2e7d86ceed3aae5a0b3">taylorreiter/2022-paper-charcoal@02d100a</a>
 on June 22, 2022.
 </em></small></p>
 <h2 id="authors">Authors</h2>
@@ -267,7 +267,11 @@ ZENODO DOI.</p>
 </figure>
 </div>
 <p>Using charcoal to detect and remove contamination, approximately 26% of GTDB rs207 genomes were contaminated at the order level or above (<strong>Figure <a href="#fig:charcoal_gtdb">2</a> A</strong>).
-Contamination was identified</p>
+Contamination was distributed across GenBank and RefSeq genomes (<strong>Figure <a href="#fig:charcoal_gtdb">2</a> B</strong>), GTDB representative and non-representative genomes (<strong>Figure <a href="#fig:charcoal_gtdb">2</a> C</strong>), isolate, single cell, and metagenome-derived genomes (<strong>Figure <a href="#fig:charcoal_gtdb">2</a> E</strong>), and taxonomic orders (<strong>Figure <a href="#fig:charcoal_gtdb">2</a> F</strong>).
+However, contamination was more likely to be identified in genomes with shorter contigs (<strong>Figure <a href="#fig:charcoal_gtdb">2</a> D</strong>) and in non-representative GTDB genomes (<strong>Figure <a href="#fig:charcoal_gtdb">2</a> C</strong>).</p>
+<ul>
+<li>TODO: run prodigal/bakta on dirty contigs, comment on number of genes/average functional potential added to contaminated genomes by contamination.</li>
+</ul>
 <h2 id="charcoal-and-checkm-identify-the-same-set-of-not-contaminated-genomes">Charcoal and CheckM identify the same set of not contaminated genomes</h2>
 <p>Charcoal is more conservative than CheckM contamination estimation at the order level.
 whereas 80.2% of genomes are estimated to have some contamination using CheckM.
